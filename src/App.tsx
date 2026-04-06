@@ -25,12 +25,12 @@ export default function App() {
               : 'bg-transparent py-4 px-6 w-full max-w-7xl'
           }`}
         >
-          <div className="flex items-center gap-2">
+          <a href="#" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
               <div className="w-2 h-2 bg-black rounded-full"></div>
             </div>
             <span className="text-lg font-bold tracking-tight">Vertex Flows</span>
-          </div>
+          </a>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-400">
