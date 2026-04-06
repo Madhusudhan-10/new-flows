@@ -56,9 +56,7 @@ export default function App() {
           }`}
         >
           <a href="#" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
-              <div className="w-2 h-2 bg-black rounded-full"></div>
-            </div>
+            <img src="https://i.ibb.co/Kx19hn4C/VF-new-logo-revised.png" alt="Vertex Flows" className="w-8 h-8 object-contain rounded-full" referrerPolicy="no-referrer" />
             <span className="text-lg font-bold tracking-tight">Vertex Flows</span>
           </a>
 
@@ -147,9 +145,6 @@ export default function App() {
           <a href="#contact" className="bg-white text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-neutral-200 transition-transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
             Start a project <ArrowUpRight className="w-5 h-5" />
           </a>
-          <button className="bg-transparent text-white border border-white/20 px-8 py-4 rounded-full font-bold text-lg hover:bg-white/5 transition-colors flex items-center justify-center">
-            View our work
-          </button>
         </motion.div>
       </section>
 
@@ -448,9 +443,7 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
             <div className="md:col-span-2">
               <div className="flex items-center gap-2 mb-6">
-                <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
-                  <div className="w-2 h-2 bg-black rounded-full"></div>
-                </div>
+                <img src="https://i.ibb.co/Kx19hn4C/VF-new-logo-revised.png" alt="Vertex Flows" className="w-8 h-8 object-contain rounded-full" referrerPolicy="no-referrer" />
                 <span className="text-2xl font-bold tracking-tight">Vertex Flows</span>
               </div>
               <p className="text-neutral-400 max-w-sm text-lg">
