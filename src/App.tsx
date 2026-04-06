@@ -5,6 +5,36 @@ import { useState, useEffect } from 'react';
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/f8ce940c3f7f0e18446dd628a5e2b135", {
+        method: "POST",
+        headers: { 
+          'Accept': 'application/json'
+        },
+        body: formData
+      });
+      
+      if (response.ok) {
+        setIsSuccess(true);
+        form.reset();
+        setTimeout(() => setIsSuccess(false), 5000);
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -376,24 +406,38 @@ export default function App() {
             <p className="text-xl text-neutral-400">Ready to start your project? Fill out the form below and we'll get back to you shortly.</p>
           </div>
           
-          <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+          <form className="space-y-6" onSubmit={handleFormSubmit}>
+            {/* Honeypot */}
+            <input type="text" name="_honey" style={{ display: 'none' }} />
+            {/* Disable reCAPTCHA */}
+            <input type="hidden" name="_captcha" value="false" />
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2 text-left">
                 <label htmlFor="name" className="text-sm font-medium text-neutral-400">Name</label>
-                <input type="text" id="name" className="w-full bg-[#111] border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#FF6B00] transition-colors" placeholder="John Doe" />
+                <input type="text" id="name" name="name" required className="w-full bg-[#111] border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#FF6B00] transition-colors" placeholder="John Doe" />
               </div>
               <div className="space-y-2 text-left">
                 <label htmlFor="email" className="text-sm font-medium text-neutral-400">Email</label>
-                <input type="email" id="email" className="w-full bg-[#111] border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#FF6B00] transition-colors" placeholder="john@example.com" />
+                <input type="email" id="email" name="email" required className="w-full bg-[#111] border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#FF6B00] transition-colors" placeholder="john@example.com" />
               </div>
             </div>
             <div className="space-y-2 text-left">
               <label htmlFor="message" className="text-sm font-medium text-neutral-400">Project Details</label>
-              <textarea id="message" rows={6} className="w-full bg-[#111] border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#FF6B00] transition-colors resize-none" placeholder="Tell us about your project..."></textarea>
+              <textarea id="message" name="message" required rows={6} className="w-full bg-[#111] border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#FF6B00] transition-colors resize-none" placeholder="Tell us about your project..."></textarea>
             </div>
-            <button type="submit" className="w-full bg-white text-black font-bold text-lg py-4 rounded-xl hover:bg-neutral-200 transition-colors">
-              Send Message
+            <button type="submit" disabled={isSubmitting} className="w-full bg-white text-black font-bold text-lg py-4 rounded-xl hover:bg-neutral-200 transition-colors disabled:opacity-70 disabled:cursor-not-allowed">
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
+            {isSuccess && (
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-green-500 font-medium text-center mt-4 bg-green-500/10 py-3 rounded-xl border border-green-500/20"
+              >
+                Thank you! Your message has been sent successfully.
+              </motion.div>
+            )}
           </form>
         </div>
       </section>
