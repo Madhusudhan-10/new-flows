@@ -1,12 +1,21 @@
 import { motion } from 'motion/react';
 import { ArrowUpRight, Code2, Layers, LayoutTemplate, Smartphone, Zap, Menu, X, Check, Phone } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [currentView, setCurrentView] = useState<'home' | 'privacy' | 'terms'>('home');
+
+  const handleNavClick = (view: 'home' | 'privacy' | 'terms') => {
+    setCurrentView(view);
+    setIsMobileMenuOpen(false);
+    if (view === 'privacy' || view === 'terms') {
+      window.scrollTo(0, 0);
+    }
+  };
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -55,21 +64,21 @@ export default function App() {
               : 'bg-transparent py-4 px-6 w-full max-w-7xl'
           }`}
         >
-          <a href="#" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('home'); window.scrollTo(0, 0); }} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <img src="https://i.ibb.co/Kx19hn4C/VF-new-logo-revised.png" alt="Vertex Flows" className="w-8 h-8 object-contain rounded-full" referrerPolicy="no-referrer" />
             <span className="text-lg font-bold tracking-tight">Vertex Flows</span>
           </a>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-400">
-            <a href="#services" className="hover:text-white transition-colors">Services</a>
-            <a href="#pricing" className="hover:text-white transition-colors">Pricing</a>
-            <a href="#about" className="hover:text-white transition-colors">About</a>
+            <a href="#services" onClick={() => handleNavClick('home')} className="hover:text-white transition-colors">Services</a>
+            <a href="#pricing" onClick={() => handleNavClick('home')} className="hover:text-white transition-colors">Pricing</a>
+            <a href="#about" onClick={() => handleNavClick('home')} className="hover:text-white transition-colors">About</a>
             <a href="tel:7411180551" className="flex items-center gap-2 hover:text-white transition-colors">
               <Phone className="w-4 h-4" />
               74111 80551
             </a>
-            <a href="#contact" className="bg-white text-black px-5 py-2.5 rounded-full font-semibold hover:bg-neutral-200 transition-transform hover:scale-105 active:scale-95">
+            <a href="#contact" onClick={() => handleNavClick('home')} className="bg-white text-black px-5 py-2.5 rounded-full font-semibold hover:bg-neutral-200 transition-transform hover:scale-105 active:scale-95">
               Let's Talk
             </a>
           </div>
@@ -87,21 +96,24 @@ export default function App() {
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8">
-          <a href="#services" className="text-3xl font-bold tracking-tighter hover:text-neutral-400 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Services</a>
-          <a href="#pricing" className="text-3xl font-bold tracking-tighter hover:text-neutral-400 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Pricing</a>
-          <a href="#about" className="text-3xl font-bold tracking-tighter hover:text-neutral-400 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>About</a>
+          <a href="#services" className="text-3xl font-bold tracking-tighter hover:text-neutral-400 transition-colors" onClick={() => handleNavClick('home')}>Services</a>
+          <a href="#pricing" className="text-3xl font-bold tracking-tighter hover:text-neutral-400 transition-colors" onClick={() => handleNavClick('home')}>Pricing</a>
+          <a href="#about" className="text-3xl font-bold tracking-tighter hover:text-neutral-400 transition-colors" onClick={() => handleNavClick('home')}>About</a>
           <a href="tel:7411180551" className="text-3xl font-bold tracking-tighter hover:text-neutral-400 transition-colors flex items-center gap-3" onClick={() => setIsMobileMenuOpen(false)}>
             <Phone className="w-8 h-8" />
             74111 80551
           </a>
-          <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="bg-white text-black px-8 py-4 rounded-full font-bold text-lg mt-4">
+          <a href="#contact" onClick={() => handleNavClick('home')} className="bg-white text-black px-8 py-4 rounded-full font-bold text-lg mt-4">
             Let's Talk
           </a>
         </div>
       )}
 
-      {/* Hero Section */}
-      <section className="relative pt-40 pb-20 md:pt-56 md:pb-32 px-6 flex flex-col items-center text-center overflow-hidden">
+      {/* Main Content Area */}
+      {currentView === 'home' ? (
+        <main>
+          {/* Hero Section */}
+          <section className="relative pt-40 pb-20 md:pt-56 md:pb-32 px-6 flex flex-col items-center text-center overflow-hidden">
         {/* Subtle background glow */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-white/[0.03] blur-[100px] rounded-full pointer-events-none"></div>
         
@@ -436,6 +448,12 @@ export default function App() {
           </form>
         </div>
       </section>
+      </main>
+      ) : currentView === 'privacy' ? (
+        <PrivacyPolicy />
+      ) : (
+        <TermsOfService />
+      )}
 
       {/* Footer */}
       <footer className="bg-[#050505] border-t border-white/10 pt-20 pb-10 px-6">
@@ -475,13 +493,123 @@ export default function App() {
           <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 text-neutral-500 font-medium">
             <p>© {new Date().getFullYear()} Vertex Flows. All rights reserved.</p>
             <div className="flex gap-6 mt-4 md:mt-0">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+              <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('privacy'); }} className="hover:text-white transition-colors">Privacy Policy</a>
+              <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('terms'); }} className="hover:text-white transition-colors">Terms of Service</a>
             </div>
           </div>
         </div>
       </footer>
     </div>
+  );
+}
+
+function PrivacyPolicy() {
+  return (
+    <main className="pt-40 pb-20 px-6 min-h-screen">
+      <div className="max-w-3xl mx-auto">
+        <h1 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight">Privacy Policy</h1>
+        <div className="space-y-8 text-neutral-300 leading-relaxed text-lg">
+          <p>
+            At Vertex Flows, we value your privacy and are committed to protecting your personal information.
+          </p>
+
+          <section>
+            <h2 className="text-2xl font-bold text-white mb-4">Information We Collect</h2>
+            <p>
+              We may collect personal information such as your name, phone number, email address, and any details you provide when contacting us through forms or WhatsApp.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-white mb-4">How We Use Your Information</h2>
+            <p className="mb-4">We use your information to:</p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>Respond to your inquiries</li>
+              <li>Provide our website development services</li>
+              <li>Improve our website and user experience</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-white mb-4">Data Protection</h2>
+            <p>
+              We do not sell, trade, or share your personal information with third parties. Your data is kept secure and used only for communication and service purposes.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-white mb-4">Third-Party Services</h2>
+            <p>
+              Our website may use third-party tools like analytics or hosting services to improve performance.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-white mb-4">Contact Us</h2>
+            <p>
+              If you have any questions about this Privacy Policy, you can contact us via WhatsApp or email.
+            </p>
+          </section>
+        </div>
+      </div>
+    </main>
+  );
+}
+
+function TermsOfService() {
+  return (
+    <main className="pt-40 pb-20 px-6 min-h-screen">
+      <div className="max-w-3xl mx-auto">
+        <h1 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight">Terms of Service</h1>
+        <div className="space-y-8 text-neutral-300 leading-relaxed text-lg">
+          <p>
+            By using our website, you agree to the following terms and conditions.
+          </p>
+
+          <section>
+            <h2 className="text-2xl font-bold text-white mb-4">Services</h2>
+            <p>
+              Vertex Flows provides website design and development services for businesses. The scope of work will be discussed and agreed upon before starting any project.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-white mb-4">Payments</h2>
+            <p>
+              Payments must be made as agreed before or during the project. Work may begin only after confirmation of payment.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-white mb-4">Client Responsibility</h2>
+            <p>
+              Clients are responsible for providing accurate information, content, and materials required for the website.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-white mb-4">Limitation of Liability</h2>
+            <p>
+              Vertex Flows is not responsible for any business losses, damages, or issues resulting from the use of the website.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-white mb-4">Changes to Services</h2>
+            <p>
+              We reserve the right to modify or update our services or terms at any time without prior notice.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-white mb-4">Contact</h2>
+            <p>
+              For any questions regarding these terms, please contact us directly.
+            </p>
+          </section>
+        </div>
+      </div>
+    </main>
   );
 }
 
