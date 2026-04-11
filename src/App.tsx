@@ -485,7 +485,6 @@ export default function App() {
                 <li><a href="#" className="hover:text-white transition-colors flex items-center gap-2">Twitter <ArrowUpRight className="w-4 h-4" /></a></li>
                 <li><a href="#" className="hover:text-white transition-colors flex items-center gap-2">LinkedIn <ArrowUpRight className="w-4 h-4" /></a></li>
                 <li><a href="https://www.instagram.com/vertexflows.in/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2">Instagram <ArrowUpRight className="w-4 h-4" /></a></li>
-                <li><a href="#" className="hover:text-white transition-colors flex items-center gap-2">Dribbble <ArrowUpRight className="w-4 h-4" /></a></li>
               </ul>
             </div>
           </div>
