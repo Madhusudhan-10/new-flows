@@ -309,7 +309,7 @@ export default function App() {
               <h3 className="text-2xl font-bold mb-2">Basic</h3>
               <p className="text-neutral-400 mb-8">Essential digital presence.</p>
               <div className="flex items-baseline gap-2 mb-8">
-                <span className="text-4xl font-bold">₹2499 - ₹4499</span>
+                <span className="text-4xl font-bold">₹4499 - ₹6499</span>
               </div>
               <ul className="space-y-4 mb-12 flex-1">
                 {['5 Page Website', 'Basic SEO Setup', 'Mobile Responsive', 'Contact Form'].map((feature, i) => (
@@ -338,7 +338,7 @@ export default function App() {
               <h3 className="text-2xl font-bold mb-2">Standard</h3>
               <p className="text-neutral-400 mb-8">Scale your business.</p>
               <div className="flex items-baseline gap-2 mb-8">
-                <span className="text-4xl font-bold">₹5499 - ₹8499</span>
+                <span className="text-4xl font-bold">₹7499 - ₹9499</span>
               </div>
               <ul className="space-y-4 mb-12 flex-1">
                 {['10+ Page Website', 'CMS Integration', 'Advanced Analytics', 'Technical SEO Audit'].map((feature, i) => (
@@ -364,7 +364,7 @@ export default function App() {
               <h3 className="text-2xl font-bold mb-2">Premium</h3>
               <p className="text-neutral-400 mb-8">Custom complex solutions.</p>
               <div className="flex items-baseline gap-2 mb-8">
-                <span className="text-4xl font-bold">₹9999+</span>
+                <span className="text-4xl font-bold">₹12999+</span>
               </div>
               <ul className="space-y-4 mb-12 flex-1">
                 {['Unlimited Pages', 'Custom Web App', 'Priority Support', 'Dedicated Manager'].map((feature, i) => (
