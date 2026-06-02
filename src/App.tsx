@@ -72,7 +72,7 @@ export default function App() {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-400">
             <a href="#services" onClick={() => handleNavClick('home')} className="hover:text-white transition-colors">Services</a>
-            <a href="#pricing" onClick={() => handleNavClick('home')} className="hover:text-white transition-colors">Pricing</a>
+            <a href="#projects" onClick={() => handleNavClick('home')} className="hover:text-white transition-colors">Projects</a>
             <a href="#about" onClick={() => handleNavClick('home')} className="hover:text-white transition-colors">About</a>
             <a href="tel:7411180551" className="flex items-center gap-2 hover:text-white transition-colors">
               <Phone className="w-4 h-4" />
@@ -97,7 +97,7 @@ export default function App() {
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8">
           <a href="#services" className="text-3xl font-bold tracking-tighter hover:text-neutral-400 transition-colors" onClick={() => handleNavClick('home')}>Services</a>
-          <a href="#pricing" className="text-3xl font-bold tracking-tighter hover:text-neutral-400 transition-colors" onClick={() => handleNavClick('home')}>Pricing</a>
+          <a href="#projects" className="text-3xl font-bold tracking-tighter hover:text-neutral-400 transition-colors" onClick={() => handleNavClick('home')}>Projects</a>
           <a href="#about" className="text-3xl font-bold tracking-tighter hover:text-neutral-400 transition-colors" onClick={() => handleNavClick('home')}>About</a>
           <a href="tel:7411180551" className="text-3xl font-bold tracking-tighter hover:text-neutral-400 transition-colors flex items-center gap-3" onClick={() => setIsMobileMenuOpen(false)}>
             <Phone className="w-8 h-8" />
@@ -286,99 +286,94 @@ export default function App() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="py-24 md:py-40 px-6 relative border-t border-white/10 bg-[#050505] overflow-hidden">
+      {/* Projects Section */}
+      <section id="projects" className="py-24 md:py-40 px-6 relative border-t border-white/10 bg-[#050505] overflow-hidden">
         {/* Subtle Grid Background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"></div>
         
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16 md:mb-24">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">Transparent Pricing</h2>
-            <p className="text-xl text-neutral-400">Choose the plan that fits your growth stage.</p>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">Our Completed Projects</h2>
+            <p className="text-xl text-neutral-400 max-w-2xl mx-auto">
+              We have completed the below websites and delivered them to the clients successfully.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Basic Plan */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-20">
+            {/* Project 1 */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-[#0A0A0A] border border-white/10 rounded-3xl p-8 flex flex-col"
+              className="bg-[#0A0A0A] border border-white/10 rounded-3xl p-8 flex flex-col group hover:border-[#FF6B00]/40 transition-colors"
             >
-              <h3 className="text-2xl font-bold mb-2">Basic</h3>
-              <p className="text-neutral-400 mb-8">Essential digital presence.</p>
-              <div className="flex items-baseline gap-2 mb-8">
-                <span className="text-4xl font-bold">₹4499 - ₹6499</span>
+              <div className="flex items-center justify-between mb-6">
+                <span className="text-sm font-semibold tracking-wider text-[#FF6B00] uppercase">Project 1</span>
+                <span className="flex h-2 w-2 relative">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
               </div>
-              <ul className="space-y-4 mb-12 flex-1">
-                {['5 Page Website', 'Basic SEO Setup', 'Mobile Responsive', 'Contact Form'].map((feature, i) => (
-                  <li key={i} className="flex items-center gap-3 text-neutral-300">
-                    <Check className="w-5 h-5 text-[#FF6B00]" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <a href="#contact" className="w-full block text-center py-4 rounded-xl bg-[#111] hover:bg-[#222] border border-white/10 font-semibold transition-colors">
-                Get Started
+              <h3 className="text-3xl font-bold mb-4 tracking-tight group-hover:text-[#FF6B00] transition-colors">onebroadbandballari.in</h3>
+              <p className="text-neutral-400 mb-8 flex-1">
+                A high-speed professional broadband service platform with custom plan discovery, local network infrastructure descriptions, and premium branding.
+              </p>
+              <a 
+                href="https://onebroadbandballari.in" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-full inline-flex items-center justify-center gap-2 py-4 rounded-xl bg-[#111] hover:bg-[#FF6B00] hover:text-black border border-white/10 font-semibold transition-all"
+              >
+                Launch Live Website <ArrowUpRight className="w-5 h-5" />
               </a>
             </motion.div>
 
-            {/* Standard Plan (Highlighted) */}
+            {/* Project 2 */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="bg-[#0A0A0A] border border-[#FF6B00] rounded-3xl p-8 flex flex-col relative transform md:-translate-y-4 shadow-[0_0_40px_-10px_rgba(255,107,0,0.15)]"
+              className="bg-[#0A0A0A] border border-white/10 rounded-3xl p-8 flex flex-col group hover:border-[#FF6B00]/40 transition-colors"
             >
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#FF6B00] text-black text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
-                Most Popular
+              <div className="flex items-center justify-between mb-6">
+                <span className="text-sm font-semibold tracking-wider text-[#FF6B00] uppercase">Project 2</span>
+                <span className="flex h-2 w-2 relative">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
               </div>
-              <h3 className="text-2xl font-bold mb-2">Standard</h3>
-              <p className="text-neutral-400 mb-8">Scale your business.</p>
-              <div className="flex items-baseline gap-2 mb-8">
-                <span className="text-4xl font-bold">₹7499 - ₹9499</span>
-              </div>
-              <ul className="space-y-4 mb-12 flex-1">
-                {['10+ Page Website', 'CMS Integration', 'Advanced Analytics', 'Technical SEO Audit'].map((feature, i) => (
-                  <li key={i} className="flex items-center gap-3 text-neutral-300">
-                    <Check className="w-5 h-5 text-[#FF6B00]" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <a href="#contact" className="w-full block text-center py-4 rounded-xl bg-[#FF6B00] hover:bg-[#FF8533] text-black font-bold transition-colors shadow-[0_0_20px_rgba(255,107,0,0.3)]">
-                Get Started
-              </a>
-            </motion.div>
-
-            {/* Premium Plan */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-[#0A0A0A] border border-white/10 rounded-3xl p-8 flex flex-col"
-            >
-              <h3 className="text-2xl font-bold mb-2">Premium</h3>
-              <p className="text-neutral-400 mb-8">Custom complex solutions.</p>
-              <div className="flex items-baseline gap-2 mb-8">
-                <span className="text-4xl font-bold">₹12999+</span>
-              </div>
-              <ul className="space-y-4 mb-12 flex-1">
-                {['Unlimited Pages', 'Custom Web App', 'Priority Support', 'Dedicated Manager'].map((feature, i) => (
-                  <li key={i} className="flex items-center gap-3 text-neutral-300">
-                    <Check className="w-5 h-5 text-[#FF6B00]" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <a href="#contact" className="w-full block text-center py-4 rounded-xl bg-[#111] hover:bg-[#222] border border-white/10 font-semibold transition-colors">
-                Contact Sales
+              <h3 className="text-3xl font-bold mb-4 tracking-tight group-hover:text-[#FF6B00] transition-colors">srimadhavsolartech.in</h3>
+              <p className="text-neutral-400 mb-8 flex-1">
+                A multi-page renewable energy solutions platform displaying solar installations, product catalogs, customer service panels, and inquiry collection systems.
+              </p>
+              <a 
+                href="https://srimadhavsolartech.in" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-full inline-flex items-center justify-center gap-2 py-4 rounded-xl bg-[#111] hover:bg-[#FF6B00] hover:text-black border border-white/10 font-semibold transition-all"
+              >
+                Launch Live Website <ArrowUpRight className="w-5 h-5" />
               </a>
             </motion.div>
           </div>
+
+          {/* Pricing Info Note */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto text-center border border-white/10 bg-white/[0.02] backdrop-blur-sm rounded-2xl p-8"
+          >
+            <h4 className="text-[#FF6B00] font-semibold text-sm tracking-widest uppercase mb-2">Our Pricing</h4>
+            <p className="text-2xl md:text-3xl font-bold tracking-tight text-white mb-2">
+              Our pricing will depend on the requirements of the clients.
+            </p>
+            <p className="text-neutral-400">
+              Every project is custom-designed. Get in touch with us with your details or call us directly for a custom tailored quotation.
+            </p>
+          </motion.div>
         </div>
       </section>
 
@@ -473,7 +468,7 @@ export default function App() {
               <h4 className="font-bold text-lg mb-6">Navigation</h4>
               <ul className="space-y-4 text-neutral-400">
                 <li><a href="#services" className="hover:text-white transition-colors">Services</a></li>
-                <li><a href="#pricing" className="hover:text-white transition-colors">Pricing</a></li>
+                <li><a href="#projects" className="hover:text-white transition-colors">Projects</a></li>
                 <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
               </ul>
