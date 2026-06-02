@@ -299,7 +299,7 @@ export default function App() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-20">
             {/* Project 1 */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -350,6 +350,35 @@ export default function App() {
               </p>
               <a 
                 href="https://srimadhavsolartech.in" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-full inline-flex items-center justify-center gap-2 py-4 rounded-xl bg-[#111] hover:bg-[#FF6B00] hover:text-black border border-white/10 font-semibold transition-all"
+              >
+                Launch Live Website <ArrowUpRight className="w-5 h-5" />
+              </a>
+            </motion.div>
+
+            {/* Project 3 */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="bg-[#0A0A0A] border border-white/10 rounded-3xl p-8 flex flex-col group hover:border-[#FF6B00]/40 transition-colors"
+            >
+              <div className="flex items-center justify-between mb-6">
+                <span className="text-sm font-semibold tracking-wider text-[#FF6B00] uppercase">Project 3</span>
+                <span className="flex h-2 w-2 relative">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+              </div>
+              <h3 className="text-3xl font-bold mb-4 tracking-tight group-hover:text-[#FF6B00] transition-colors">srivishwa.co.in</h3>
+              <p className="text-neutral-400 mb-8 flex-1">
+                An elegant, custom-crafted corporate website focusing on brand discovery, seamless layout styling, dynamic page responsiveness, and high-performance lead generation.
+              </p>
+              <a 
+                href="https://srivishwa.co.in" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="w-full inline-flex items-center justify-center gap-2 py-4 rounded-xl bg-[#111] hover:bg-[#FF6B00] hover:text-black border border-white/10 font-semibold transition-all"
