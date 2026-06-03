@@ -388,6 +388,26 @@ export default function App() {
             </motion.div>
           </div>
 
+          {/* Ongoing Count Indicator Banner */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-center mt-12 mb-20 max-w-2xl mx-auto px-4"
+          >
+            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-white/5 bg-white/[0.01]/10 backdrop-blur-sm text-neutral-300 text-sm font-medium mb-4 shadow-[0_0_30px_rgba(255,107,0,0.02)]">
+              <span className="flex h-2.5 w-2.5 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF6B00] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#FF6B00]"></span>
+              </span>
+              Many more projects successfully completed & still counting
+            </div>
+            <p className="text-neutral-400 text-base leading-relaxed">
+              Our portfolio continues to grow. We regularly craft high-performance websites and bespoke digital workflows across diverse industries, focusing strictly on top-tier speed, elegance, and utility.
+            </p>
+          </motion.div>
+
           {/* Pricing Info Note */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
